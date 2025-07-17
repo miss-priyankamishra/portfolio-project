@@ -1,0 +1,927 @@
+/* Global Styles - Essential for theme variables */
+:root {
+    /* Dark Mode Colors (Default) */
+    --primary-color: #fca93dea; /* Your chosen orange-ish accent color */
+    --secondary-color: #d5d5d5; /* Light gray for secondary elements/text */
+    --background-color: #0a0a0a; /* Very dark background for main sections */
+    --surface-color: #1a1a1a; /* Slightly lighter dark for cards/boxes */
+    --text-color: #ffffff; /* White text for dark backgrounds */
+    --heading-color: #ffffff; /* White headings for dark backgrounds */
+    --accent-blue: #4070f4; /* Blue color from original animation.css, kept for specific highlights */
+    --border-color: #333333; /* Subtle border color */
+    --shadow-color: rgba(0, 0, 0, 0.3); /* Dark shadow */
+    --light-text: #ffffff; /* Specific variable for elements that should always be light text (e.g., icons on dark backgrounds) */
+}
+
+/* Light Mode Colors - Applied when data-theme="light" is on <html> */
+html[data-theme="light"] {
+    --primary-color: #FF7B25; /* A vibrant orange for light mode */
+    --secondary-color: #666666; /* Darker gray for secondary elements/text */
+    --background-color: #f0f2f5; /* Light gray background */
+    --surface-color: #ffffff; /* White background for cards/boxes */
+    --text-color: #333333; /* Dark text for light backgrounds */
+    --heading-color: #222222; /* Darker headings for light backgrounds */
+    --accent-blue: #007bff; /* A standard blue for light mode accents */
+    --border-color: #e0e0e0; /* Light border color */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    --light-text: #ffffff; /* Still white for elements that need to stand out on dark primary color */
+}
+
+/* Universal Box-Sizing and Reset (important for consistent layout) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Changed to a more modern, readable font */
+    text-decoration: none; /* Ensures no underlines on links by default */
+    list-style: none; /* Removes bullet points from lists */
+    /* Smooth transitions for theme change - applied to all elements */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* Body Styles */
+body {
+    overflow-x: hidden; /* Prevents horizontal scrollbar issues */
+    background-color: var(--background-color); /* Uses theme variable */
+    color: var(--text-color); /* Uses theme variable */
+    line-height: 1.6; /* Improved readability */
+}
+
+/* Reusable Container for content width */
+.container {
+    max-width: 1200px; /* Standard max-width for content */
+    margin: 0 auto; /* Center the container */
+    padding: 0 15px; /* Add horizontal padding */
+}
+
+/* Hero Header Section */
+.hero-header {
+    width: 100%;
+    min-height: 100vh; /* Ensures it takes full viewport height */
+    background: var(--background-color); /* Uses theme variable */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Use flexbox to align content vertically */
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+    padding: 20px 40px; /* Adjusted padding for better spacing */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    background-color: var(--background-color); /* Uses theme variable */
+    position: sticky; /* Makes the navbar stick to the top on scroll */
+    top: 0;
+    z-index: 1000; /* Ensures it stays on top of other content */
+    box-shadow: 0 2px 10px var(--shadow-color); /* Uses theme variable */
+}
+
+.Logo {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-icon {
+    height: 50px; /* Slightly smaller for a cleaner look */
+    width: 50px;
+    background-color: var(--primary-color); /* Uses primary accent color */
+    border-radius: 50%;
+    color: var(--light-text); /* Always white text for logo icon */
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex; /* Uses flexbox for perfect centering of text */
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+.logo-icon:hover {
+    background-color: var(--accent-blue); /* Changes to accent blue on hover */
+}
+
+.logo-text {
+    font-size: 28px; /* Slightly larger for prominence */
+    font-weight: 600; /* Bolder text */
+    color: var(--heading-color); /* Uses theme variable */
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex; /* Default to flex for desktop */
+    align-items: center;
+    transition: all 0.5s ease; /* Smooth transition for mobile menu slide-in/out */
+}
+
+.nav-links li {
+    padding: 0 20px; /* Adjusted padding between links */
+}
+
+.nav-links a {
+    color: var(--text-color); /* Uses theme variable */
+    font-size: 18px; /* Consistent font size for navigation */
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-color); /* Highlights active/hovered link with primary color */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0; /* Hidden by default */
+    height: 2px;
+    background: var(--primary-color); /* Uses theme variable */
+    bottom: -5px; /* Positions underline slightly below text */
+    left: 0;
+    transition: width 0.3s ease; /* Smooth width animation for underline */
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%; /* Expands underline on hover/active */
+}
+
+/* Mode Toggle Button - NEW STYLES */
+.mode-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-color); /* Uses theme variable */
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.mode-toggle-btn:hover {
+    color: var(--primary-color);
+    background-color: var(--surface-color);
+}
+
+
+/* Burger Menu for Mobile - Hidden by default on desktop */
+.burger {
+    display: none; 
+    cursor: pointer;
+    flex-direction: column; /* Stacks lines vertically */
+    justify-content: space-around; /* Evenly spaces lines */
+    width: 30px;
+    height: 25px;
+}
+
+.burger div {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color); /* Uses theme variable */
+    border-radius: 2px;
+    transition: all 0.3s ease; /* Smooth transition for burger animation */
+}
+
+/* Close Button for Mobile Menu - Hidden by default */
+.close-btn {
+    display: none; 
+    font-size: 30px;
+    color: var(--text-color); /* Uses theme variable */
+    cursor: pointer;
+    padding: 10px 20px;
+    align-self: flex-end; /* Aligns to the top-right within the mobile menu */
+}
+
+/* Hero Content Wrapper - Main content of the hero section */
+.hero-content-wrapper {
+    display: flex;
+    justify-content: space-around; /* Distributes space around items */
+    align-items: center;
+    padding-top: 4rem;
+    flex-wrap: wrap; /* Allows content to wrap onto new lines on smaller screens */
+    gap: 2rem; /* Space between the text and image columns */
+    flex-grow: 1; /* Allows this container to take available vertical space */
+}
+
+.hero-pic {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 10px solid var(--secondary-color); /* Uses theme variable */
+    box-shadow: 0 5px 20px var(--shadow-color); /* Uses theme variable */
+    flex-shrink: 0; /* Prevents the image from shrinking too much */
+}
+
+.hero-pic img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    transition: transform 0.5s ease; /* Smooth zoom effect */
+}
+
+.hero-pic img:hover {
+    transform: scale(1.1); /* Slightly less aggressive zoom on hover */
+}
+
+.hero-text {
+    max-width: 500px; /* Limits the width of the text block */
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Default text alignment */
+}
+
+.hero-text h1 {
+    font-weight: 700; /* Bolder heading */
+    color: var(--primary-color); /* Uses theme variable */
+    font-size: 3.5rem; /* Larger font size for main name */
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    color: var(--text-color); /* Uses theme variable */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.hero-text .first-text {
+    color: var(--text-color); /* Uses theme variable */
+    font-size: 1.2rem;
+    display: flex;
+    align-items: baseline; /* Aligns "Hii I'm" and animated text nicely */
+    margin-bottom: 0.5rem;
+}
+
+.hero-text .second-text {
+    color: var(--primary-color); /* Uses theme variable */
+    position: relative;
+    margin-left: 10px; /* Adjusted margin for spacing */
+    font-size: 1.2rem; /* Consistent font size with first-text */
+    font-weight: 600;
+}
+
+/* Animation for second-text - Consolidated and refined */
+.second-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0; /* Animation starts from 0 */
+    height: 100%;
+    width: 100%;
+    background-color: var(--background-color); /* Matches body background for seamless effect */
+    border-left: 2px solid var(--primary-color); /* Uses primary color for border */
+    animation: animate 4s steps(12) infinite;
+}
+
+@keyframes animate {
+    40%, 60% {
+        left: 100%; /* Moves cursor to the end */
+    }
+    100% {
+        left: 0; /* Resets cursor to the beginning */
+    }
+}
+
+/* Social Media Icons - Refactored for better positioning and responsiveness */
+.social-media ul {
+    display: flex;
+    padding: 0;
+    margin-top: 2rem; /* Space below buttons */
+    justify-content: flex-start; /* Aligns icons to the left */
+}
+
+.social-media ul li {
+    margin: 0 10px; /* Reduced margin between icons */
+}
+
+.social-media ul li a {
+    display: flex; /* Uses flexbox for perfect centering of the icon */
+    align-items: center;
+    justify-content: center;
+    width: 45px; /* Smaller size for icons */
+    height: 45px;
+    background: var(--surface-color); /* Uses theme variable */
+    border-radius: 50%;
+    font-size: 22px; /* Smaller icon size */
+    color: var(--secondary-color); /* Uses theme variable */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    position: relative;
+    z-index: 1;
+}
+
+.social-media ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--primary-color); /* Uses theme variable */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation for glow */
+    transform: scale(0.9); /* Slightly smaller initially */
+    z-index: -1;
+}
+
+.social-media ul li a:hover::before {
+    transform: scale(1.1); /* Expands on hover */
+    box-shadow: 0 0 15px var(--primary-color); /* Adds a glow effect */
+}
+
+.social-media ul li a:hover {
+    color: var(--light-text); /* White icon on hover */
+    box-shadow: 0 0 5px var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}
+
+/* Button Group */
+.btn-group {
+    margin-top: 3rem; /* Space above buttons */
+    margin-bottom: 2rem; /* Space below buttons */
+    display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap onto new lines */
+    gap: 15px; /* Space between buttons */
+}
+
+.btn-group .btn {
+    border-color: var(--secondary-color); /* Uses theme variable */
+    color: var(--text-color); /* Uses theme variable */
+    background-color: var(--surface-color); /* Uses theme variable */
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 2px solid var(--secondary-color); /* Uses theme variable */
+    box-shadow: 0 5px 15px var(--shadow-color); /* Uses theme variable */
+    transition: all 0.3s ease;
+}
+
+.btn-group .btn:hover {
+    border-color: var(--primary-color); /* Uses theme variable */
+    color: var(--primary-color); /* Uses theme variable */
+    background-color: transparent; /* Transparent background on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+}
+
+.line {
+    border-top: 1px solid var(--border-color); /* Uses theme variable */
+    width: 100%;
+    margin-top: 4rem; /* Space above the line */
+}
+
+/* About Section */
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem; /* Increased gap between image and content */
+    padding: 80px 0; /* Consistent vertical padding for sections */
+    background-color: var(--background-color); /* Uses theme variable */
+    flex-wrap: wrap; /* Allows content to wrap on smaller screens */
+    border: none; /* remove the default border */
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.about-img {
+    flex-shrink: 0; /* Prevents the image container from shrinking */
+    max-width: 400px; /* Max width for the image container */
+}
+
+.about-img img {
+    width: 100%; /* Makes image responsive within its container */
+    height: auto;
+    border-radius: 10px; /* Slightly rounded corners */
+    box-shadow: 0 5px 20px var(--shadow-color); /* Uses theme variable */
+}
+
+.about-content {
+    max-width: 600px; /* Limits the width of the text content */
+    color: var(--text-color); /* Uses theme variable */
+}
+
+.about-content h2 {
+    text-align: left;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: var(--heading-color); /* Uses theme variable */
+    font-weight: 700;
+    font-size: 2.5rem; /* Larger heading for prominence */
+    position: relative;
+    display: inline-block; /* Allows pseudo-element for underline */
+}
+
+.about-content h2 span {
+    color: var(--primary-color); /* Highlights "ME" with primary color */
+}
+
+.about-content h2::after {
+    content: '';
+    position: absolute;
+    width: 50%; /* Underline width */
+    height: 3px;
+    background: var(--primary-color); /* Uses theme variable */
+    bottom: -10px;
+    left: 0;
+    transition: width 0.3s ease; /* Smooth underline expansion */
+}
+
+.about-content h2:hover::after {
+    width: 100%; /* Expands underline on hover */
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.7; /* Improved line spacing for readability */
+    margin-bottom: 1.5rem;
+}
+
+.about-content .btn {
+    background-color: var(--primary-color); /* Uses theme variable */
+    color: var(--light-text); /* Always white text for this button */
+    box-shadow: 0 5px 15px var(--shadow-color); /* Uses theme variable */
+    border: none; /* Removes default button border */
+    padding: 12px 30px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.about-content .btn:hover {
+    background-color: var(--accent-blue);
+    transform: translateY(-3px);
+}
+
+/* Reusable Section Headings */
+.section-heading {
+    color: var(--heading-color); /* Uses theme variable */
+    font-weight: 700;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Ensures pseudo-element is centered correctly */
+}
+
+.section-heading span {
+    color: var(--primary-color); /* Uses theme variable */
+}
+
+.section-heading::after {
+    content: '';
+    position: absolute;
+    width: 100px; /* Shorter underline for section headings */
+    height: 4px;
+    background: var(--primary-color); /* Uses theme variable */
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.section-heading:hover::after {
+    width: 150px; /* Expands on hover */
+}
+
+/* Services Section */
+.service {
+    padding: 80px 0;
+    background-color: var(--background-color); /* Uses theme variable */
+    border: none; /* remove the default border */
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.service-container {
+    display: grid; /* Switched to CSS Grid for robust responsive layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Auto-fits columns, min 280px, max 1fr */
+    gap: 2rem; /* Space between service boxes */
+    justify-content: center;
+    align-items: stretch; /* Ensures boxes have equal height */
+}
+
+.service-box {
+    background-color: var(--surface-color); /* Uses theme variable */
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid var(--border-color); /* Uses theme variable */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0 5px 15px var(--shadow-color); /* Uses theme variable */
+    display: flex; /* Uses flexbox for content alignment inside box */
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content apart */
+}
+
+.service-box:hover {
+    border-color: var(--primary-color); /* Uses theme variable */
+    transform: translateY(-10px); /* Lift effect */
+    background-color: var(--primary-color); /* Changes background on hover */
+    color: var(--light-text); /* Ensures text is readable */
+}
+
+.service-box i {
+    color: var(--primary-color); /* Uses theme variable */
+    font-size: 3rem; /* Larger icon size */
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.service-box:hover i {
+    color: var(--light-text); /* Icon color changes on hover */
+}
+
+.service-box h3 {
+    color: var(--heading-color); /* Uses theme variable */
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.service-box:hover h3 {
+    color: var(--light-text); /* Heading color changes on hover */
+}
+
+.service-box p {
+    color: var(--text-color); /* Uses theme variable */
+    font-size: 1rem;
+    line-height: 1.6;
+    flex-grow: 1; /* Allows paragraph to take available space */
+}
+
+.service-box:hover p {
+    color: var(--light-text); /* Paragraph color changes on hover */
+}
+
+/* Portfolio Section */
+.portfolio {
+    padding: 80px 0;
+    background-color: var(--background-color); /* Uses theme variable */
+    border: none; /* remove the default border */
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.portfolio-container {
+    display: grid; /* Switched to CSS Grid for flexible layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Auto-fits columns, min 300px, max 1fr */
+    gap: 20px; /* Space between portfolio items */
+    justify-content: center;
+}
+
+.portfolio-box {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden; /* Crucial for containing image zoom and overlay */
+    box-shadow: 0 5px 15px var(--shadow-color); /* Uses theme variable */
+    cursor: pointer; /* Indicates interactivity */
+    height: 250px; /* Fixed height for consistent card size */
+}
+
+/* Image Zoom Animation */
+.portfolio-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images cover the box without distortion */
+    transition: transform 0.5s ease; /* Smooth zoom effect */
+}
+
+.portfolio-box:hover img {
+    transform: scale(1.1); /* Zooms image slightly on hover */
+}
+
+/* Overlay Fade-in Animation */
+.portfolio-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Darker overlay for better text contrast */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fade-in and slight lift */
+    padding: 20px;
+    text-align: center;
+    transform: translateY(100%); /* Starts off-screen at the bottom */
+}
+
+.portfolio-box:hover .portfolio-layer {
+    opacity: 1; /* Fades in on hover */
+    transform: translateY(0); /* Slides up to cover the box */
+}
+
+.text-portfolio {
+    color: var(--light-text); /* Always white text for portfolio layer */
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px; /* Space below title */
+}
+
+/* Styles for the container of project links (e.g., live demo, GitHub) */
+.portfolio-links {
+    display: flex; /* Arrange links in a row */
+    gap: 10px; /* Space between multiple links */
+    margin-top: 10px; /* Space above links if title is present */
+}
+
+.portfolio-layer a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color); /* Uses theme variable */
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio-layer a:hover {
+    background-color: var(--accent-blue);
+}
+
+.portfolio-layer a i {
+    font-size: 1.5rem;
+    color: var(--light-text); /* Always white icon for portfolio layer */
+}
+
+/* Contact Section */
+.contact {
+    padding: 80px 0;
+    background-color: var(--background-color); /* Uses theme variable */
+    border: none; /* remove the default border */
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.contact form {
+    max-width: 700px; /* Max width for the form container */
+    margin: 0 auto; /* Centers the form */
+    text-align: center;
+}
+
+.contact .input-box {
+    display: flex;
+    flex-wrap: wrap; /* Allows inputs to wrap onto new lines */
+    gap: 20px; /* Space between inputs */
+    margin-bottom: 20px;
+}
+
+.contact .input-box input,
+.contact .input-box textarea {
+    flex: 1 1 45%; /* Allows inputs to grow/shrink, aiming for two columns */
+    padding: 15px;
+    font-size: 1rem;
+    color: var(--text-color); /* Uses theme variable */
+    background-color: var(--surface-color); /* Uses theme variable */
+    border: 1px solid var(--border-color); /* Uses theme variable */
+    border-radius: 8px;
+    outline: none; /* Removes default outline on focus */
+    transition: border-color 0.3s ease;
+}
+
+.contact .input-box input:focus,
+.contact .input-box textarea:focus {
+    border-color: var(--primary-color); /* Highlights border on focus */
+}
+
+.contact .input-box textarea {
+    flex-basis: 100%; /* Textarea takes full width */
+    min-height: 150px;
+    resize: vertical; /* Allows vertical resizing only */
+}
+
+/* Placeholder text styling */
+::placeholder {
+    color: var(--secondary-color); /* Uses theme variable */
+    opacity: 0.8;
+}
+
+.contact .btn {
+    background-color: var(--primary-color); /* Uses theme variable */
+    color: var(--light-text); /* Always white text for this button */
+    padding: 12px 40px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px var(--shadow-color); /* Uses theme variable */
+}
+
+.contact .btn:hover {
+    background-color: var(--accent-blue);
+    transform: translateY(-3px);
+}
+
+/* Scroll to Top Button */
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999; /* Ensures it's above other content */
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color); /* Uses theme variable */
+    color: var(--light-text); /* Always white text for this button */
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%; /* Makes it circular */
+    box-shadow: 0 5px 15px var(--shadow-color); /* Uses theme variable */
+    transition: all 0.3s ease;
+}
+
+#myBtn:hover {
+    background-color: var(--accent-blue);
+    transform: translateY(-3px);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--surface-color); /* Uses theme variable */
+    color: var(--text-color); /* Uses theme variable */
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color); /* Uses theme variable */
+}
+
+/* Responsive Styles - Mobile-first approach (min-width not used here, but order is important) */
+/* Styles for screens smaller than 992px (typical tablet landscape and smaller desktops) */
+@media screen and (max-width: 992px) {
+    .navbar {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+    .nav-links {
+        display: none; /* Hide nav links by default on mobile */
+        flex-direction: column; /* Stack links vertically */
+        width: 100%;
+        position: fixed; /* Use fixed to cover viewport */
+        top: 0; /* Start from top */
+        left: 0;
+        height: 100vh; /* Full viewport height */
+        background-color: var(--background-color); /* Uses theme variable */
+        text-align: center;
+        padding: 80px 0 20px; /* Padding from top to avoid logo */
+        box-shadow: 0 5px 15px var(--shadow-color); /* Uses theme variable */
+        transform: translateX(-100%); /* Hide off-screen to the left */
+        justify-content: flex-start; /* Align links to the top */
+        align-items: center;
+        z-index: 999; /* Ensure it's above other content but below burger */
+    }
+
+    .nav-links.active {
+        transform: translateX(0); /* Slide in when active */
+    }
+
+    .nav-links li {
+        padding: 15px 0; /* More padding for touch targets */
+    }
+
+    .nav-links li a {
+        font-size: 22px; /* Larger links for touch */
+    }
+
+    .burger {
+        display: flex; /* Show burger icon on smaller screens */
+    }
+
+    .close-btn {
+        display: block; /* Show close button in mobile menu */
+        position: absolute;
+        top: 20px; /* Position relative to the menu */
+        right: 20px;
+    }
+
+    .hero-content-wrapper {
+        flex-direction: column; /* Stack text and image vertically */
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+
+    .hero-text .first-text,
+    .hero-text .second-text {
+        font-size: 1.1rem;
+        justify-content: center; /* Center animated text */
+    }
+
+    .hero-pic {
+        margin-top: 2rem;
+    }
+
+    .social-media ul {
+        justify-content: center; /* Center social icons */
+    }
+
+    .about {
+        flex-direction: column; /* Stack about content vertically */
+        text-align: center;
+    }
+
+    .about-img {
+        margin-bottom: 2rem;
+    }
+
+    .about-content h2 {
+        text-align: center;
+    }
+
+    .about-content h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .contact .input-box input,
+    .contact .input-box textarea {
+        flex-basis: 100%; /* Full width for inputs on smaller screens */
+    }
+}
+
+/* Styles for screens smaller than 768px (typical tablet portrait and larger phones) */
+@media screen and (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    .hero-text p {
+        font-size: 1rem;
+    }
+    .section-heading {
+        font-size: 2.5rem;
+    }
+    .service-box {
+        padding: 2rem 1.5rem;
+    }
+    .service-box h3 {
+        font-size: 1.5rem;
+    }
+    .portfolio-box {
+        height: 200px; /* Slightly smaller height for portfolio items */
+    }
+    .text-portfolio {
+        font-size: 1.3rem;
+    }
+}
+
+/* Styles for screens smaller than 480px (typical mobile phones) */
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 15px;
+    }
+    .logo-text {
+        font-size: 22px;
+    }
+    .hero-pic {
+        width: 250px;
+        height: 250px;
+    }
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    .hero-text .first-text,
+    .hero-text .second-text {
+        font-size: 1rem;
+    }
+    .section-heading {
+        font-size: 2rem;
+    }
+    .service-box {
+        padding: 1.5rem;
+    }
+    .service-box i {
+        font-size: 2.5rem;
+    }
+    .portfolio-box {
+        height: 180px;
+    }
+    .text-portfolio {
+        font-size: 1.1rem;
+    }
+    .contact .btn {
+        width: 100%; /* Full width button */
+    }
+}

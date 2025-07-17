@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Priyanka Mishra's professional portfolio showcasing web development and graphic design skills.">
+    <meta name="keywords" content="HTML, CSS, JavaScript, React, Frontend Developer, Web Designer, Graphic Designer, Portfolio, Priyanka Mishra">
+    <meta name="author" content="Priyanka Mishra">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanka Mishra | Frontend Developer & Web Designer</title>
+
+    <!-- Main Stylesheet - CORRECTED FILE NAME -->
+    <link rel="stylesheet" href="Styles.css">
+
+    <!-- Bootstrap CSS - Kept for grid system and components -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    
+    <!-- Font Awesome for Icons - Essential for modern portfolios -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Scroll to Top Button - Improved accessibility with aria-label -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top" aria-label="Scroll to top of the page">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Header Section - Contains navigation and hero content -->
+    <header class="hero-header container-fluid">
+        <div class="wrapper">
+            <!-- Navigation Bar - Semantic <nav> tag -->
+            <nav class="navbar">
+                <div class="Logo">
+                    <div class="logo-icon">PM</div>
+                    <div class="logo-text">Priyanka Mishra</div>
+                </div>
+                <!-- Navigation Links - Unique IDs for JS targeting, improved accessibility -->
+                <ul class="nav-links" id="navLinks">
+                    <li class="close-btn" id="closeBtn" aria-label="Close navigation menu">&times;</li>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#service">Service</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <!-- Dark/Light Mode Toggle Button - NEW -->
+                    <li>
+                        <button id="mode-toggle" class="mode-toggle-btn" aria-label="Toggle dark and light mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+                <!-- Burger Menu Icon - Improved accessibility with aria-label -->
+                <div class="burger" id="burger" aria-label="Open navigation menu">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+
+            <!-- Hero Content Wrapper - Flex container for text and image -->
+            <div class="hero-content-wrapper container">
+                <div class="hero-text">
+                    <h5 class="text first-text">Hii I'm
+                        <!-- Animated text integrated directly here, controlled by javafile.js -->
+                        <span class="text second-text">Frontend Developer</span>
+                    </h5>
+                    <h1>Priyanka Mishra</h1>
+                    <p>Explore my digital world where creativity meets technology. Welcome to my website!</p>
+
+                    <div class="btn-group">
+                        <a href="Images/Priyanka-Resume.pdf" download class="btn">Download CV</a>
+                        <a href="#contact" class="btn">Contact</a>
+                    </div>
+                   
+                    <!-- Social Media Links - Moved inside hero-text for better layout control, improved accessibility -->
+                    <div class="social-media">
+                        <ul>
+                            <li>
+                                <a href="https://x.com/Priyank64738532" target="_blank" aria-label="Visit Priyanka Mishra's Twitter Profile">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/its-priyankamishra" target="_blank" aria-label="Visit Priyanka Mishra's LinkedIn Profile">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:priyanka.mishra28011@gmail.com" target="_blank" aria-label="Send an email to Priyanka Mishra">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/miss-priyankamishra" target="_blank" aria-label="Visit Priyanka Mishra's GitHub Profile">
+                                    <i class="fab fa-github"></i>
+                                </a> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="hero-pic">
+                    <!-- Image with descriptive alt text -->
+                    <img src="Images/half-size.jpeg" alt="Priyanka Mishra - Professional Profile Picture">
+                </div>
+            </div>
+            <div class="line"></div> <!-- Decorative line for visual separation -->
+        </div>
+    </header>
+
+    <!-- Main Content Area - Semantic <main> tag -->
+    <main>
+        <!-- About Section - Semantic <section> tag -->
+        <section class="about container-fluid" id="about">
+          
+            <div class="about-img">
+                <!-- Image with descriptive alt text -->
+                <img src="Images/full-zise-photo.jpeg" alt="Priyanka Mishra working on a laptop, showcasing web design skills">
+            </div>
+            <div class="about-content">
+                <h2>ABOUT <span>ME</span></h2>
+                <p>Hello! I'm Priyanka Mishra, a passionate web developer and graphic designer. I graduated from
+                    Delhi University and hold a diploma in Graphics from Arena Animation. Additionally, I've
+                    expanded my knowledge in Software Development through various online platforms such as Udemy,
+                    W3Schools, and YouTube. With a strong foundation in HTML, CSS, JavaScript, and React, I have
+                    successfully completed numerous projects that showcase my skills and creativity. My educational
+                    background and continuous learning have equipped me with the tools to deliver visually appealing
+                    and highly functional web applications.</p>
+            </div>
+            
+        </section>
+
+        <!-- Services Section - Semantic <section> tag -->
+        <section class="service container-fluid" id="service">
+            <div class="container">
+            <h1 class="section-heading">My<span> Service</span></h1>
+            <!-- Service Container - Now uses CSS Grid for better responsiveness -->
+            <div class="service-container">
+                <div class="service-box">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Frontend Developer</h3>
+                    <p>As a front-end designer, I specialize in crafting visually engaging and responsive content web pages that enhance user experience and effectively communicate your brand's message.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fa-solid fa-laptop"></i>
+                    <h3>Graphics Designer</h3>
+                    <p>A graphic designer specializing in content web pages, I craft visually appealing layouts that enhance readability and user engagement while aligning with brand aesthetics.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fa-solid fa-hashtag"></i>
+                    <h3>Social Media</h3>
+                    <p>Crafting engaging content for web pages that resonates on social media, driving visibility, interaction, and brand growth across platforms.</p>
+                </div>
+            </div>
+            </div>
+        </section> 
+        
+        <!-- Portfolio Section - Semantic <section> tag -->
+        <section class="portfolio container-fluid" id="portfolio">
+            <div class="container">
+            <h1 class="section-heading">My<span> Projects</span></h1> <!-- Changed heading to "My Projects" -->
+            <!-- Portfolio Container - Now uses CSS Grid for flexible layout -->
+            <div class="portfolio-container">
+                <!-- Project Item 1: Education Learning Website -->
+                <div class="portfolio-box">
+                    <img src="Images/Education.jpeg" alt="Screenshot of Education Learning website project, showing a clean educational platform design.">
+                    <div class="portfolio-layer">
+                        <h4 class="text-portfolio">Education Learning Platform</h4> <!-- More descriptive title -->
+                        <div class="portfolio-links"> <!-- Container for multiple links if needed -->
+                            <a href="https://miss-priyankamishra.github.io/EducationLearning/" target="_blank" aria-label="View live demo of Education Learning project">
+                                <i class="fa-solid fa-globe"></i> <!-- Changed icon to globe for live demo -->
+                            </a>
+                            <!-- Add GitHub link if available -->
+                            <!-- <a href="YOUR_GITHUB_REPO_LINK" target="_blank" aria-label="View code on GitHub">
+                                <i class="fab fa-github"></i>
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 2: Beauty Bliss (Coming Soon) -->
+                <div class="portfolio-box">
+                    <img src="Images/Makeup.jpeg" alt="Placeholder screenshot for Beauty Bliss website, indicating a beauty and makeup related project.">
+                    <div class="portfolio-layer">
+                        <h4 class="text-portfolio">Beauty Bliss (Coming Soon)</h4>
+                        <div class="portfolio-links">
+                            <a href="#" aria-label="Project coming soon, link not active">
+                                <i class="fa-solid fa-hourglass-half"></i> <!-- Changed icon to hourglass for coming soon -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 3: Amazon Clone -->
+                <div class="portfolio-box">
+                    <img src="Images/Amazon.jpeg" alt="Screenshot of Amazon clone project, displaying e-commerce product listings.">
+                    <div class="portfolio-layer">
+                        <h4 class="text-portfolio">Amazon Clone</h4>
+                        <div class="portfolio-links">
+                            <a href="https://miss-priyankamishra.github.io/Amazon/" target="_blank" aria-label="View live demo of Amazon clone project">
+                                <i class="fa-solid fa-globe"></i>
+                            </a>
+                            <!-- Add GitHub link if available -->
+                            <!-- <a href="YOUR_GITHUB_REPO_LINK" target="_blank" aria-label="View code on GitHub">
+                                <i class="fab fa-github"></i>
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 4: Coming Soon -->
+                <div class="portfolio-box">
+                    <img src="Images/CoomingSoon.jpeg" alt="Placeholder image for a new web project, indicating it is under development.">
+                    <div class="portfolio-layer">
+                        <h4 class="text-portfolio">New Project (Coming Soon)</h4>
+                        <div class="portfolio-links">
+                            <a href="#" aria-label="Project coming soon, link not active">
+                                <i class="fa-solid fa-hourglass-half"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 5: Coming Soon -->
+                <div class="portfolio-box">
+                    <img src="Images/CoomingSoon.jpeg" alt="Placeholder image for another web project, indicating it is under development.">
+                    <div class="portfolio-layer">
+                        <h4 class="text-portfolio">New Project (Coming Soon)</h4>
+                        <div class="portfolio-links">
+                            <a href="#" aria-label="Project coming soon, link not active">
+                                <i class="fa-solid fa-hourglass-half"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 6: Coming Soon -->
+                <div class="portfolio-box">
+                    <img src="Images/CoomingSoon.jpeg" alt="Placeholder image for a future web development project.">
+                    <div class="portfolio-layer">
+                        <h4 class="text-portfolio">New Project (Coming Soon)</h4>
+                        <div class="portfolio-links">
+                            <a href="#" aria-label="Project coming soon, link not active">
+                                <i class="fa-solid fa-hourglass-half"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Contact Section - Semantic <section> tag -->
+        <section class="contact container-fluid" id="contact">
+            <h1 class="section-heading">My<span> Contact</span></h1>
+            <!-- Form with action and method attributes, improved input types and accessibility -->
+            <form action="#" method="POST"> 
+                <div class="input-box">
+                    <input type="text" placeholder="Full Name" required aria-label="Your Full Name">
+                    <input type="email" placeholder="Email Address" required aria-label="Your Email Address">
+                </div>
+                <div class="input-box">
+                    <input type="tel" placeholder="Mobile Number (Optional)" aria-label="Your Mobile Number"> 
+                    <input type="text" placeholder="Email Subject" required aria-label="Subject of your message">
+                </div>
+                <div class="input-box">
+                    <textarea name="message" cols="40" rows="10" placeholder="Your Message" required aria-label="Your Message"></textarea>
+                    <input type="submit" value="Send Message" class="btn">
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section - Semantic <footer> tag -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Dynamic year for copyright -->
+            <p>&copy; <span id="current-year"></span> Priyanka Mishra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files - CORRECTED FILE NAME -->
+    <script src="Javascriptt.js"></script>
+    <!-- Bootstrap JS Bundle - Only one import needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+</html>
